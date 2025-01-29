@@ -3,13 +3,13 @@ import path from 'path';
 export default {
     preset: 'ts-jest',
     testEnvironment: 'node',
-    globals: {
-        'ts-jest': {
-            isolatedModules: true,
-        },
+    transform: {
+        '^.+\\.tsx?$': ['ts-jest', { isolatedModules: true }],
     },
     moduleNameMapper: {
-        '^@application/(.*)$': path.resolve(__dirname, 'src/application/$1'),
-        '^@infrastructure/(.*)$': path.resolve(__dirname, 'src/infrastructure/$1'),
+        '^@application/(.*)$': '<rootDir>/src/application/$1',
+        '^@infrastructure/(.*)$': '<rootDir>/src/infrastructure/$1',
+        '^@domain/(.*)$': '<rootDir>/src/domain/$1',
+        '^@helper/(.*)$': '<rootDir>/src/helper/$1',
     },
 };
