@@ -5,4 +5,3 @@ export class ConnectionError extends ApplicationError {
         super("A connection error occurred.");
     }
 }
-

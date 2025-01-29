@@ -9,7 +9,7 @@ import express, {
     type Express,
 } from "express";
 import logger from "@infrastructure/setup/helper/Logger";
-import {WebSocketServer} from "@infrastructure/setup/WebsocketServer";
+import {WebSocketServer} from "@infrastructure/setup/websocket/WebsocketServer";
 class Server {
     private readonly app: Express;
     private webSocketServer?: WebSocketServer;

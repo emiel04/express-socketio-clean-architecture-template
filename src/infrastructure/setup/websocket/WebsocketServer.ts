@@ -7,12 +7,12 @@ import {ApplicationError} from "@domain/errors/ApplicationError";
 import {UnauthorizedError} from "@domain/errors/UnauthorizedError";
 import {UnauthenticatedError} from "@domain/errors/UnauthenticatedError";
 import {DomainError} from "@domain/errors/DomainError";
+import loggingMiddleware from "@infrastructure/setup/websocket/middleware";
 
 export class WebSocketServer {
     private readonly io: SocketIOServer;
 
     constructor(httpServer: HttpServer) {
-        console.log("test")
         logger.info("Creating websocket server");
         const options: Partial<ServerOptions> = {
             cors: {
@@ -28,6 +28,8 @@ export class WebSocketServer {
         }
 
         this.io = new SocketIOServer(httpServer, options);
+        this.io.use(loggingMiddleware);
+
     }
 
     initialize() {
@@ -51,6 +53,7 @@ export class WebSocketServer {
             try {
                 await handler(socket);
             } catch (e) {
+                await new Promise(resolve => setTimeout(resolve, 2000));
                 if(e instanceof ApplicationError) {
                     this.handleError(socket, e);
                 }
@@ -63,16 +66,23 @@ export class WebSocketServer {
 
     private handleError(socket: Socket, e: ApplicationError) {
         if(e instanceof UnauthorizedError) {
-            socket.emit("error", "Unauthorized");
-            socket.disconnect();
+            socket.emit("errors", "Unauthorized");
+            this.disconnectSocket(socket)
         }else if (e instanceof UnauthenticatedError){
-            socket.emit("error", "Unauthenticated");
-            socket.disconnect();
+            socket.emit("errors", "Unauthenticated");
+            this.disconnectSocket(socket)
         }else if (e instanceof DomainError){
-            socket.emit("error", e.message);
+            socket.emit("errors", e.message);
         }
         else{
-            socket.emit("error", "Something went wrong");
+            socket.emit("errors", "Something went wrong");
         }
     }
+
+    private disconnectSocket(socket: Socket) {
+        logger.info(`Disconnecting socket ${socket.id}`);
+        socket.disconnect();
+    }
+
+
 }

@@ -19,16 +19,11 @@ export class ConnectionEndpoint implements WSEndpoint {
         }
         // Anonymous session
         this.handleAnonymous(socket);
-
-
-
-
     }
 
     private handleAuth(socket: Socket, token: string) {
         // TODO authenication
         // TODO do something with connection (call controller?)
-        throw new DomainError("Auth not implemented yet");
     }
 
     private handleAnonymous(socket: Socket) {

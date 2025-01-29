@@ -1,8 +1,7 @@
-import express, {
-    NextFunction,
+import {
     type Request,
     type Response,
-    Express,
+
 } from "express";
 
 export interface Endpoint {

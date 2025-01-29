@@ -2,11 +2,10 @@ import type { Endpoint } from "@infrastructure/shared/endpoint";
 import { HealthOutputPort } from "@infrastructure/setup/outputs/HealthOutputPort";
 import { HealthUseCase } from "@application/use-cases/HealthUseCase";
 import { HealthController } from "@infrastructure/controller/Http/HealthController";
-import express, {
-    NextFunction,
+import {
     type Request,
     type Response,
-    Express,
+
 } from "express";
 
 export class HealthEndpoint implements Endpoint {
