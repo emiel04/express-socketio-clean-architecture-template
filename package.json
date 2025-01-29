@@ -8,12 +8,15 @@
     "build": "tsc && tsc-alias",
     "start": "node ./dist/main.js",
     "test": "jest",
-    "bs": "pnpm run build && pnpm run start"
+    "bs": "pnpm run build && pnpm run start",
+    "format": "biome format --write ./",
+    "lint": "biome lint --write ./src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",

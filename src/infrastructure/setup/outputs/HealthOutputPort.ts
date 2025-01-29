@@ -1,6 +1,6 @@
-import {OutputPort} from "@application/shared/OutputPort";
-import {HealthOutput} from "@application/use-cases/HealthUseCase";
-import express, { NextFunction, Request, Response, Express } from "express";
+import type { OutputPort } from "@application/shared/OutputPort";
+import type { HealthOutput } from "@application/use-cases/HealthUseCase";
+import express, { NextFunction, Request, type Response, Express } from "express";
 
 export class HealthOutputPort implements OutputPort<HealthOutput> {
     private response: Response;
@@ -13,4 +13,3 @@ export class HealthOutputPort implements OutputPort<HealthOutput> {
         this.response.send(output);
     }
 }
-

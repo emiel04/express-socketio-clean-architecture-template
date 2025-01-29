@@ -1,10 +1,10 @@
-import { Endpoint } from "@infrastructure/shared/endpoint"
-import {HealthOutputPort} from "@infrastructure/setup/outputs/HealthOutputPort";
-import {HealthUseCase} from "@application/use-cases/HealthUseCase";
-import {HealthController} from "@infrastructure/controller/HealthController";
-import express, { NextFunction, Request, Response, Express } from "express";
+import type { Endpoint } from "@infrastructure/shared/endpoint";
+import { HealthOutputPort } from "@infrastructure/setup/outputs/HealthOutputPort";
+import { HealthUseCase } from "@application/use-cases/HealthUseCase";
+import { HealthController } from "@infrastructure/controller/HealthController";
+import express, { NextFunction, type Request, type Response, Express } from "express";
 
-export class HealthEndpoint implements Endpoint{
+export class HealthEndpoint implements Endpoint {
     async handle(req: Request, res: Response): Promise<void> {
         const outputPort = new HealthOutputPort(res);
         const useCase = new HealthUseCase(outputPort);
@@ -14,5 +14,4 @@ export class HealthEndpoint implements Endpoint{
 
         return Promise.resolve();
     }
-
 }
