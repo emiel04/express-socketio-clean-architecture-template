@@ -5,7 +5,12 @@ import morgan from "morgan";
 import DailyRotateFile from "winston-daily-rotate-file";
 
 import cors from "cors";
-import express, { type NextFunction, type Request, type Response, type Express } from "express";
+import express, {
+    type NextFunction,
+    type Request,
+    type Response,
+    type Express,
+} from "express";
 import logger from "@infrastructure/setup/helper/Logger";
 class Server {
     private readonly app: Express;

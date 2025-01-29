@@ -10,7 +10,8 @@
     "test": "jest",
     "bs": "pnpm run build && pnpm run start",
     "format": "biome format --write ./",
-    "lint": "biome lint --write ./src"
+    "lint": "biome lint --write ./src",
+    "qa": "pnpm run format && pnpm run lint && pnpm run test"
   },
   "keywords": [],
   "author": "",

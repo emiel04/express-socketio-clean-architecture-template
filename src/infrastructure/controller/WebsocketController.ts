@@ -1,4 +1,9 @@
-import express, { NextFunction, type Request, Response, Express } from "express";
+import express, {
+    NextFunction,
+    type Request,
+    Response,
+    Express,
+} from "express";
 
 export class WebsocketController {
     constructor(

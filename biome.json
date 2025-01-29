@@ -22,12 +22,12 @@
         "enabled": true,
         "rules": {
             "recommended": true,
-			"style": {
-				"noUnusedTemplateLiteral": "info"
-			},
-			"suspicious": {
-				"noExplicitAny": "info"
-			}
+            "style": {
+                "noUnusedTemplateLiteral": "info"
+            },
+            "suspicious": {
+                "noExplicitAny": "info"
+            }
         }
     },
     "javascript": {
