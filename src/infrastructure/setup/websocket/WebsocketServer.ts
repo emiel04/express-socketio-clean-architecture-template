@@ -78,7 +78,6 @@ export class WebSocketServer {
             socket.emit("errors", "Unauthenticated");
             this.disconnectSocket(socket);
         } else if (e instanceof DomainError) {
-            new DomainError();
             socket.emit("errors", e.message);
         } else {
             socket.emit("errors", "Something went wrong");
