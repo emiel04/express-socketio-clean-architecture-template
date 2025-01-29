@@ -1,6 +1,6 @@
 import { registerRoutes } from "@infrastructure/setup/Routes";
 import morgan from "morgan";
-import type {Server as HttpServer} from "node:http";
+import type { Server as HttpServer } from "node:http";
 import cors from "cors";
 import express, {
     type NextFunction,
@@ -9,7 +9,7 @@ import express, {
     type Express,
 } from "express";
 import logger from "@infrastructure/setup/helper/Logger";
-import {WebSocketServer} from "@infrastructure/setup/websocket/WebsocketServer";
+import { WebSocketServer } from "@infrastructure/setup/websocket/WebsocketServer";
 class Server {
     private readonly app: Express;
     private webSocketServer?: WebSocketServer;
@@ -24,7 +24,6 @@ class Server {
                 stream: { write: (msg: any) => logger.info(msg.trim()) },
             }),
         );
-
 
         this.registerRoutes();
         this.registerErrorHandler();
@@ -50,8 +49,7 @@ class Server {
 
     private handleProcessSignals() {
         const signalHandler = async (): Promise<void> => {
-            console.log(`Received signal. Shutting down gracefully...`);
-            await this.close();
+            logger.info("Received signal. Shutting down gracefully...");
             process.exit(0);
         };
 
@@ -64,15 +62,6 @@ class Server {
         this.webSocketServer = new WebSocketServer(this.httpServer);
         this.webSocketServer.initialize();
         logger.info(`Server is running at http://localhost:${port}`);
-    }
-
-    public async close() {
-        try {
-            // await this.app.close();
-            console.log("Server closed.");
-        } catch (err) {
-            console.error("Error during server close:", err);
-        }
     }
 }
 

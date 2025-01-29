@@ -1,5 +1,5 @@
 import { HealthEndpoint } from "./endpoints/HealthEndpoint";
-import type {Express, Request, Response} from "express";
+import type { Express, Request, Response } from "express";
 
 export function registerRoutes(app: Express) {
     app.get("/", (req: Request, res: Response) => {

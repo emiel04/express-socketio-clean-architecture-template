@@ -1,4 +1,4 @@
-import {ApplicationError} from "./ApplicationError";
+import { ApplicationError } from "./ApplicationError";
 
 export class UnauthenticatedError extends ApplicationError {
     constructor() {

@@ -1,14 +1,14 @@
 import Server from "@infrastructure/setup/Server";
-import config from "@helper/config"
+import config from "@helper/config";
 import logger from "@infrastructure/setup/helper/Logger";
 function startServer() {
     const server = new Server();
     server.start(config.port);
 }
 
-try{
+try {
     startServer();
-}catch (err) {
+} catch (err) {
     logger.error("Failed to start the application:", err);
 }
 

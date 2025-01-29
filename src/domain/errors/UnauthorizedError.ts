@@ -1,6 +1,6 @@
-import {ApplicationError} from "./ApplicationError";
+import { ApplicationError } from "./ApplicationError";
 
-export class  UnauthorizedError extends ApplicationError {
+export class UnauthorizedError extends ApplicationError {
     constructor() {
         super("Unauthorized.");
     }

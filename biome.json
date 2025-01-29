@@ -27,6 +27,9 @@
             },
             "suspicious": {
                 "noExplicitAny": "info"
+            },
+            "complexity": {
+                "noUselessConstructor": "info"
             }
         }
     },
