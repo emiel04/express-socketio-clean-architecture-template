@@ -1,12 +1,12 @@
 import { HealthEndpoint } from "./endpoints/HealthEndpoint";
-import type { Express } from "express";
+import type {Express, Request, Response} from "express";
 
-export function registerRoutes(app: Express, io: any) {
-    app.get("/", (req, res) => {
+export function registerRoutes(app: Express) {
+    app.get("/", (req: Request, res: Response) => {
         res.json({ hello: "world" });
     });
 
-    app.get("/health", async (req: any, res: any) => {
+    app.get("/health", async (req: Request, res: Response) => {
         const endpoint = new HealthEndpoint();
         await endpoint.handle(req, res);
     });

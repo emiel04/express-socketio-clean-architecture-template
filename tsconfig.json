@@ -12,16 +12,21 @@
     "baseUrl": "./src",
     "paths": {
       "@application/*": ["application/*"],
-      "@infrastructure/*": ["infrastructure/*"]
+      "@infrastructure/*": ["infrastructure/*"],
+      "@domain/*": ["domain/*"],
+      "@helper/*": ["helper/*"],
     },
     "outDir": "./dist",
+    "plugins": [{ "transform": "typescript-transform-paths" }]
   },
   "include":[
     "src/**/*",
-    "test/**/*.ts"
   ],
   "exclude": [
     "node_modules"
   ],
-  "esm": true
+  "esm": true,
+  "tsc-alias": {
+    "verbose": true
+  }
 }

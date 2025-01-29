@@ -1,9 +1,6 @@
 import { registerRoutes } from "@infrastructure/setup/Routes";
-import { Server as SocketIOServer } from "socket.io";
-import winston from "winston";
 import morgan from "morgan";
-import DailyRotateFile from "winston-daily-rotate-file";
-
+import type {Server as HttpServer} from "node:http";
 import cors from "cors";
 import express, {
     type NextFunction,
@@ -12,9 +9,11 @@ import express, {
     type Express,
 } from "express";
 import logger from "@infrastructure/setup/helper/Logger";
+import {WebSocketServer} from "@infrastructure/setup/WebsocketServer";
 class Server {
     private readonly app: Express;
-    private readonly io: SocketIOServer;
+    private webSocketServer?: WebSocketServer;
+    private httpServer?: HttpServer;
 
     constructor() {
         this.app = express();
@@ -26,7 +25,6 @@ class Server {
             }),
         );
 
-        this.io = new SocketIOServer();
 
         this.registerRoutes();
         this.registerErrorHandler();
@@ -34,7 +32,7 @@ class Server {
     }
 
     private registerRoutes() {
-        registerRoutes(this.app, this.io);
+        registerRoutes(this.app);
     }
 
     private registerErrorHandler() {
@@ -61,13 +59,11 @@ class Server {
         process.on("SIGTERM", signalHandler); // Handle termination signal
     }
 
-    public async start(port = 3000) {
-        try {
-            this.app.listen({ port });
-            console.log(`Server is running at http://localhost:${port}`);
-        } catch (err) {
-            process.exit(1);
-        }
+    public start(port = 3000) {
+        this.httpServer = this.app.listen({ port });
+        this.webSocketServer = new WebSocketServer(this.httpServer);
+        this.webSocketServer.initialize();
+        logger.info(`Server is running at http://localhost:${port}`);
     }
 
     public async close() {

@@ -1,7 +1,7 @@
 import type { Endpoint } from "@infrastructure/shared/endpoint";
 import { HealthOutputPort } from "@infrastructure/setup/outputs/HealthOutputPort";
 import { HealthUseCase } from "@application/use-cases/HealthUseCase";
-import { HealthController } from "@infrastructure/controller/HealthController";
+import { HealthController } from "@infrastructure/controller/Http/HealthController";
 import express, {
     NextFunction,
     type Request,
