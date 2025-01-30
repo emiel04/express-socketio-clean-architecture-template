@@ -60,7 +60,6 @@ export class WebSocketServer {
             try {
                 await handler(socket);
             } catch (e) {
-                await new Promise((resolve) => setTimeout(resolve, 2000));
                 if (e instanceof ApplicationError) {
                     this.handleError(socket, e);
                 } else {

@@ -1,5 +1,5 @@
 {
-  "name": "wolfjes-server-node",
+  "name": "express-socketio-clean-architecture-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
