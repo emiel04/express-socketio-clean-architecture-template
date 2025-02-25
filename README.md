@@ -6,7 +6,7 @@ This is a template project for quickly setting up a web server using **Express**
 
 - **Clean Architecture**: A modular structure that separates concerns and makes the code easier to maintain.
 - **Socket.io**: Built-in support for real-time WebSocket communication.
-- **Formatting & Linting**: Automatic formatting and linting using [Biome](https://github.com/biomejs/biome).
+- **Formatting & Linting**: Automatic formatting and linting using [Prettier](https://prettier.io/docs/) and [ESLint](https://eslint.org/docs/latest/use/getting-started).
 - **Unit Testing**: Preconfigured testing setup with [Jest](https://jestjs.io/) to easily write and run unit tests.
 - **Path Aliases**: Use of path aliases to simplify imports and make the code cleaner and more readable.
 
@@ -70,7 +70,7 @@ Jest will automatically find all test files and run them, providing feedback on 
 
 ## Linting and Formatting
 
-This project uses **Biome** for linting and formatting to ensure code quality and consistency.
+This project uses **Prettier and ESLint** for linting and formatting to ensure code quality and consistency.
 
 ### To lint your code:
 
@@ -108,11 +108,11 @@ pnpm run format
     ```bash
     pnpm run bs
     ```
-- **format**: Formats the project files using Biome.
+- **format**: Formats the project files using Prettier.
     ```bash
     pnpm run format
     ```
-- **lint**: Lints the source code with Biome.
+- **lint**: Lints the source code with ESLint.
     ```bash
     pnpm run lint
     ```
