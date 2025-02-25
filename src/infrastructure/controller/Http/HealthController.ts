@@ -1,4 +1,4 @@
-import type { Controller } from "@infrastructure/shared/controller";
+import type { Controller } from "@infrastructure/shared/Controller";
 import type { UseCase } from "@application/shared/UseCase";
 
 export class HealthController implements Controller<void> {

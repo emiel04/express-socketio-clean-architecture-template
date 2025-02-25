@@ -1,5 +1,5 @@
-import type { Endpoint } from "@infrastructure/shared/endpoint";
-import { HealthPresenter } from "@infrastructure/setup/outputs/HealthPresenter";
+import type { Endpoint } from "@infrastructure/shared/Endpoint";
+import { HealthPresenter } from "@infrastructure/presenters/HealthPresenter";
 import { HealthUseCase } from "@application/use-cases/HealthUseCase";
 import { HealthController } from "@infrastructure/controller/Http/HealthController";
 import type { Request, Response } from "express";

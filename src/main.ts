@@ -1,6 +1,6 @@
 import Server from "@infrastructure/setup/Server";
 import config from "@helper/config";
-import logger from "@infrastructure/setup/helper/Logger";
+import logger from "@infrastructure/helper/Logger";
 function startServer() {
     const server = new Server();
     server.start(config.port);

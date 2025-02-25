@@ -1,9 +1,8 @@
 import type { WSEndpoint } from "@infrastructure/shared/WSEndpoint";
 import type { Socket } from "socket.io";
 import { Guid } from "guid-typescript";
-import logger from "@infrastructure/setup/helper/Logger";
-import { UnauthenticatedError } from "@domain/errors/UnauthenticatedError";
-import { DomainError } from "@domain/errors/DomainError";
+import logger from "@infrastructure/helper/Logger";
+import { UnauthenticatedError } from "@infrastructure/errors/UnauthenticatedError";
 
 export class ConnectionEndpoint implements WSEndpoint {
     async handle(socket: Socket): Promise<void> {
