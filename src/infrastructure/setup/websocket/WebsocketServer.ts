@@ -51,7 +51,7 @@ export class WebSocketServer {
             this.handleSocketEvent(async (socket: Socket) => {
                 const connectionEndpoint = new ConnectionEndpoint();
                 await connectionEndpoint.handle(socket);
-            }),
+            })
         );
     }
 

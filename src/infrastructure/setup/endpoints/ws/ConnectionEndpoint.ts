@@ -8,7 +8,7 @@ import { DomainError } from "@domain/errors/DomainError";
 export class ConnectionEndpoint implements WSEndpoint {
     async handle(socket: Socket): Promise<void> {
         logger.info(
-            `New websocket connection from ${socket.handshake.address} with id ${socket.id}`,
+            `New websocket connection from ${socket.handshake.address} with id ${socket.id}`
         );
 
         const token = socket.handshake.query.token as string;
@@ -34,7 +34,7 @@ export class ConnectionEndpoint implements WSEndpoint {
             JSON.stringify({
                 type: "anonymous",
                 id: id,
-            }),
+            })
         );
         throw new UnauthenticatedError();
         // for example, quit

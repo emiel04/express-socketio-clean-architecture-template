@@ -22,7 +22,7 @@ class Server {
         this.app.use(
             morgan("common", {
                 stream: { write: (msg: any) => logger.info(msg.trim()) },
-            }),
+            })
         );
 
         this.registerRoutes();
@@ -43,7 +43,7 @@ class Server {
                     error: err.name || "InternalServerError",
                     message: err.message || "Something went wrong.",
                 });
-            },
+            }
         );
     }
 

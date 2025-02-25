@@ -9,7 +9,7 @@ function createLogger(): Logger {
                 format: winston.format.combine(
                     winston.format.colorize(),
                     winston.format.timestamp(),
-                    winston.format.simple(),
+                    winston.format.simple()
                 ),
             }),
             new DailyRotateFile({
@@ -20,7 +20,7 @@ function createLogger(): Logger {
                 level: "info",
                 format: winston.format.combine(
                     winston.format.timestamp(),
-                    winston.format.json(),
+                    winston.format.json()
                 ),
             }),
         ],

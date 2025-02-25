@@ -1,5 +1,3 @@
-// test/healthUseCase.test.ts
-
 import { describe, test } from "@jest/globals";
 import assert from "node:assert";
 import {
@@ -35,7 +33,7 @@ describe("HealthUseCase", () => {
         const tolerance = 200; // 200ms tolerance
         assert.ok(
             Math.abs(outputData!.date.getTime() - now.getTime()) < tolerance,
-            "Date should be close to now",
+            "Date should be close to now"
         );
     });
 });
