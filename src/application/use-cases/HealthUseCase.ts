@@ -14,10 +14,7 @@ export class HealthUseCase implements UseCase<void> {
     }
 
     async execute(): Promise<void> {
-        this.outputPort.present({
-            date: new Date(),
-            status: "OK",
-        });
+        this.outputPort.present({ date: new Date(), status: "OK" });
         return Promise.resolve();
     }
 }

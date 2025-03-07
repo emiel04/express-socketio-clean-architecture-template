@@ -5,9 +5,11 @@ import cors from "cors";
 import process from "node:process";
 import express, { type Express } from "express";
 import logger from "@infrastructure/helper/Logger";
+import { WebSocketServer } from "@infrastructure/setup/websocket/WebsocketServer";
 import { errorMiddleware } from "@infrastructure/setup/Middleware";
 class Server {
     private readonly app: Express;
+    private webSocketServer?: WebSocketServer;
     private httpServer?: HttpServer;
 
     constructor() {
@@ -44,6 +46,8 @@ class Server {
 
     public start(port = 3000) {
         this.httpServer = this.app.listen({ port });
+        this.webSocketServer = new WebSocketServer(this.httpServer);
+        this.webSocketServer.initialize();
         logger.info(`Server is running at http://localhost:${port}`);
     }
 }

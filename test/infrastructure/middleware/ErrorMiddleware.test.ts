@@ -1,15 +1,14 @@
-import { describe, beforeEach, it, expect, vi } from "vitest";
-import { errorMiddleware } from "@infrastructure/setup/Middleware";
+import { describe, beforeEach, it, expect } from "@jest/globals";
+import { jest } from "@jest/globals";
+import { errorMiddleware } from "../../../src/infrastructure/setup/Middleware";
 import { Request, Response } from "express";
-import logger from "@infrastructure/helper/Logger";
-import { DomainError } from "@domain/errors/DomainError";
-import { HttpError } from "@infrastructure/errors/HttpError";
+import logger from "../../../src/infrastructure/helper/Logger";
+import { DomainError } from "../../../src/domain/errors/DomainError";
+import { HttpError } from "../../../src/infrastructure/errors/HttpError";
 
-vi.mock("@infrastructure/helper/Logger", () => ({
-    default: {
-        error: vi.fn(),
-        info: vi.fn(),
-    },
+jest.mock("@infrastructure/helper/Logger", () => ({
+    error: jest.fn(),
+    info: jest.fn(),
 }));
 
 describe("errorMiddleware", () => {
@@ -18,15 +17,14 @@ describe("errorMiddleware", () => {
     let mockNext: any;
 
     beforeEach(() => {
-        vi.clearAllMocks();
-
         mockRequest = {};
         mockResponse = {
-            status: vi.fn().mockReturnThis(),
-            json: vi.fn(),
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
         } as any;
 
-        mockNext = vi.fn();
+        mockNext = jest.fn();
+        jest.clearAllMocks();
     });
 
     it("should handle generic Error", () => {
