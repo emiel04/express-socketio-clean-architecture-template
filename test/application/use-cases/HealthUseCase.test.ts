@@ -1,5 +1,3 @@
-import { describe, test, beforeEach } from "@jest/globals";
-import assert from "node:assert";
 import {
     HealthOutput,
     HealthUseCase,
@@ -23,7 +21,7 @@ describe("HealthUseCase", () => {
 
     test("should return status 'OK'", async () => {
         await healthUseCase.execute();
-        assert.strictEqual(outputData!.status, "OK", "Status should be OK");
+        expect(outputData!.status).toBe("OK"); //
     });
 
     test("should return a date close to now", async () => {
@@ -31,9 +29,9 @@ describe("HealthUseCase", () => {
         await healthUseCase.execute();
 
         const tolerance = 200; // 200ms tolerance
-        assert.ok(
-            Math.abs(outputData!.date.getTime() - now.getTime()) < tolerance,
-            "Date should be close to now"
-        );
+
+        expect(
+            Math.abs(outputData!.date.getTime() - now.getTime())
+        ).toBeLessThan(tolerance);
     });
 });
